@@ -14,6 +14,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model("User", userSchema, "authEntity");
+const User = mongoose.model("User", userSchema, "users");
 
 module.exports = User;

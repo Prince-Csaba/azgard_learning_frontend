@@ -1,0 +1,10 @@
+{
+ "courses" : [
+  {"title": "Munkatársi státusz 0", "status": "done", "av": "yes", "recommended": "yes", "length": "25", "date-finished" : "2020-02-11"},
+  {"title": "Munkatársi státusz 1", "status": "not started", "av": "yes", "recommended": "yes", "length": "40", "date-finished" : ""},
+  {"title": "Térneri státusz 0", "status": "not started", "av": "yes", "recommended": "none", "length": "10", "date-finished" : ""},
+  {"title": "Tréneri státusz 1", "status": "not started", "av": "no", "recommended": "none", "length": "50", "date-finished" : ""},
+  {"title": "Területi képviselő státusz 0", "status": "done", "av": "yes", "recommended": "yes", "length": "25", "date-finished" : "2020-02-28"},
+  {"title": "Tiszta kommunikáció tréning", "status": "in progress", "av": "yes", "recommended": "yes", "length": "10", "date-finished" : ""}
+  ]
+}

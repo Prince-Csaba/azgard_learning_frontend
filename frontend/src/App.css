@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-logo {
@@ -13,17 +19,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -32,7 +27,62 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  height: 3rem;
+  width: 20rem;
+  font-size: 1.2rem;
+}
+
+.course {
+  border-radius: 5px;
+  width: 97.5%;
+  height: 5rem;
+  border: 1px solid whitesmoke;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+.course:hover {
+  cursor: pointer;
+}
+
+.course.notAv {
+  opacity: 0.5;
+}
+
+.course.notAv:hover {
+  cursor: not-allowed;
+}
+
+.sort {
+  width: 100;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: coral;
 }
