@@ -8,8 +8,18 @@ router.get('/', function(req, res, next) {
 
 const User = require("../models/user.model");
 
-User.find({})
-.then(res => console.log(res));
+let getUser = async () => {
+  thisUser = await User.find({});
+  thisUser = thisUser[0].basic_class;
+  console.log(thisUser);
+}
+
+getUser();
+
+router.get('/api/user', function(req, res, next) {
+  res.json({ thisUser });
+});
+
 
 const Class = require("../models/class.model");
 

@@ -5,7 +5,7 @@ const classSchema = new mongoose.Schema({
     type: String
   },
   lessons: {
-    type: Object,
+    type: Array,
     required: true,
     unique: true,
   },

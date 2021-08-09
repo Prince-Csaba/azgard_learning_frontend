@@ -6,6 +6,31 @@ import BasicCourse from './components/BasicCourse';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  //fetch user data
+  const [user, setUser] = useState(false);
+  let basicClassStatus;
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/user')
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setUser(result);
+          setIsLoaded(true);
+        },
+
+        (error) => {
+          setError(true);
+          setIsLoaded(true);
+        }
+      )
+  }, [])
+
+  user && console.log(user, basicClassStatus);
+
   return (
     <div className="App">
       {loggedIn ? <BasicCourse /> : <MainScreen setLoggedIn={setLoggedIn} />}

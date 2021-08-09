@@ -24,19 +24,16 @@ function BasicCourse(props) {
           setIsLoaded(true);
         }
       )
-      .finally(
-        lesson = course
-      )
   }, [])
 
-  course && console.log(course.myClasses);
+  course && console.log(course.myClasses.lessons);
 
   return (
 
     course ?
       <div>
         < h1 > {course.myClasses.title}</h1 >
-        {for (lesson in course.myClasses.lessons) { } .map((lesson, index) => { return <Lesson lesson={lesson} key={index} /> })}
+        {course && course.myClasses.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} /> })}
       </div >
       :
       <div>Kérem várjon, amíg a tananyag betöltődik</div>
