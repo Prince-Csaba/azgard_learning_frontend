@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+const Class = require("../models/class.model");
+const courses = require('../old/file/courses.json');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.json({ title: 'Express' });
@@ -21,23 +24,14 @@ router.get('/api/user', function(req, res, next) {
 });
 
 
-const Class = require("../models/class.model");
-
-let myClasses;
-
-let getClass = async () => {
-myClasses = await Class.find({});
-myClasses = myClasses[0];
-console.log(myClasses);
-}
-
-getClass();
-
-router.get('/api/classes', function(req, res, next) {
+router.get('/api/classes', async function(req, res, next) {
+  let myClasses;
+  myClasses = await Class.find({});
+  myClasses = myClasses[0];
+  console.log(myClasses);
   res.json({ myClasses });
 });
 
-const courses = require('../old/file/courses.json');
 
 /* express.use(express.static('file')); */
 

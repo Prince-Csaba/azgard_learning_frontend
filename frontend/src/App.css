@@ -53,8 +53,7 @@ button {
 
 .lesson {
   border-radius: 5px;
-  max-width: 97.5%;
-  height: 5rem;
+  max-width: 97.5vw;
   border: 1px solid whitesmoke;
   padding: 10px;
   margin: 5px 0;
@@ -62,11 +61,39 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+}
+
+.lesson h3,
+p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding: 0.2rem;
+}
+
+.lesson p {
+  max-width: 70vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lesson p.opened {
+  white-space: normal;
+  overflow: auto;
 }
 
 .done {
   border-color: green;
   color: green;
+}
+
+.next {
+  opacity: 0.5;
+}
+
+.next:hover {
+  cursor: not-allowed;
 }
 
 .details {

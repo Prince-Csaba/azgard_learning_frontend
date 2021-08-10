@@ -9,13 +9,14 @@ function BasicCourse(props) {
   const [error, setError] = useState(false);
 
   let lesson;
+  console.log(props.user);
 
   useEffect(() => {
     fetch('http://localhost:8000/api/classes')
       .then(res => res.json())
       .then(
         (result) => {
-          setCourse(result);
+          setCourse(result.myClasses);
           setIsLoaded(true);
         },
 
@@ -26,14 +27,14 @@ function BasicCourse(props) {
       )
   }, [])
 
-  course && console.log(course.myClasses.lessons);
+  course && console.log(course);
 
   return (
 
     course ?
       <div>
-        < h1 > {course.myClasses.title}</h1 >
-        {course && course.myClasses.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} /> })}
+        < h1 > {course.title}</h1 >
+        {course && course.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} index={index} classStatus={props.user} /> })}
       </div >
       :
       <div>Kérem várjon, amíg a tananyag betöltődik</div>

@@ -11,7 +11,6 @@ function App() {
 
   //fetch user data
   const [user, setUser] = useState(false);
-  let basicClassStatus;
 
   useEffect(() => {
     fetch('http://localhost:8000/api/user')
@@ -29,11 +28,11 @@ function App() {
       )
   }, [])
 
-  user && console.log(user, basicClassStatus);
+  user && console.log(user);
 
   return (
     <div className="App">
-      {loggedIn ? <BasicCourse /> : <MainScreen setLoggedIn={setLoggedIn} />}
+      {loggedIn ? <BasicCourse user={user} /> : <MainScreen setLoggedIn={setLoggedIn} />}
     </div>
   );
 }
