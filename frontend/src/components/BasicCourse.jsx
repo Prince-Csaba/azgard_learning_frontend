@@ -12,7 +12,7 @@ function BasicCourse(props) {
   console.log(props.user);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/classes')
+    fetch('http://localhost:8000/api/lessons')
       .then(res => res.json())
       .then(
         (result) => {

@@ -1,40 +1,31 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-const Class = require("../models/class.model");
+const { getLessons } = require('../controllers/GetLessons');
+const { googleLogin } = require('../controllers/LoginController');
+
 const courses = require('../old/file/courses.json');
+const User = require("../models/user.model");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.json({ title: 'Express' });
 });
 
-const User = require("../models/user.model");
-
-let getUser = async () => {
+router.get('/api/user', async function(req, res, next) {
   thisUser = await User.find({});
   thisUser = thisUser[0].basic_class;
   console.log(thisUser);
-}
-
-getUser();
-
-router.get('/api/user', function(req, res, next) {
   res.json({ thisUser });
 });
 
 
-router.get('/api/classes', async function(req, res, next) {
-  let myClasses;
-  myClasses = await Class.find({});
-  myClasses = myClasses[0];
-  console.log(myClasses);
-  res.json({ myClasses });
-});
+router.get('/api/lessons', getLessons);
+
+router.post('/api/login', googleLogin);
 
 
 /* express.use(express.static('file')); */
-
 router.get('/old', (req, res) => {
   res.json(courses);
 });

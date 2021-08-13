@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const classSchema = new mongoose.Schema({
+const lessonSchema = new mongoose.Schema({
   title: {
     type: String
   },
@@ -11,6 +11,6 @@ const classSchema = new mongoose.Schema({
   },
 });
 
-const Class = mongoose.model("Class", classSchema, "basic_class");
+const Lesson = mongoose.model("Lesson", lessonSchema, "basic_class");
 
-module.exports = Class;
+module.exports = Lesson;

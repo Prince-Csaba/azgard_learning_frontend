@@ -17,6 +17,9 @@ function Lesson(props) {
         <div className="lesson">
           <h3>{props.title}</h3>
           <p className={opened ? "opened" : ""}>{props.text}</p>
+          {opened &&
+            <button onClick={console.log("Done")}>Kész</button>
+          }
           <button onClick={() => setOpened(!opened)}><strong>▼</strong></button>
         </div>
         :

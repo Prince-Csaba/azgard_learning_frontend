@@ -1,30 +1,26 @@
-import './App.css';
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import MainScreen from './components/MainScreen';
-import CoursesScreen from './components/CoursesScreen';
-import BasicCourse from './components/BasicCourse';
-import Login from './components/Login';
-
+import { useState, createContext, useEffect } from 'react';
+/* import './sass/App.sass'; */
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
+import Home from './components/Home';
+import Login from './components/Login';
+/* import Navbar from './components/Navbar';
+import Calendar from './components/Calendar';
+import ListCalendar from './components/ListCalendar';
+import AddCalendar from './components/AddCalendar';
+import Event from './components/Event';
+import EventList from './components/EventList';
+import GetGroups from './components/GetGroups';
+ */
+export const UserContext = createContext(null);
+
 function App() {
+  const [user, setUser] = useState(null);
 
+  const googleUrl = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=657899331675-fr3vkhlvd1836sd7t1id2c9ik2pu3hen.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http%3A//localhost:3000/login';
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
-
-  //fetch user data
-  const [user, setUser] = useState(false);
-
-  const login = () => {
-    const googleUrl = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=657899331675-fr3vkhlvd1836sd7t1id2c9ik2pu3hen.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http%3A//localhost:3000/login'; /* &prompt=select_account */
-
-    window.location.href = googleUrl;
-  }
-
-/*    useEffect(() => {
+  useEffect(() => {
     let token = localStorage.getItem('jwt');
 
     try {
@@ -40,8 +36,7 @@ function App() {
     } catch (error) {
       return;
     }
-  }, []); */
-
+  }, []);
 
   return (
     <Router>
@@ -80,7 +75,7 @@ function App() {
         </main>
       </UserContext.Provider>
     </Router>
-  )
+  );
 }
 
 export default App;

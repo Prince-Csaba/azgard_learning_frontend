@@ -20,9 +20,20 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  level: {
+    type: Number,
+  },
+  basic_class: {
+    type: Object,
   }
 });
 
-const User = mongoose.model("User", userSchema, "google-users");
+const User = mongoose.model("User", userSchema, "users");
 
 module.exports = User;
