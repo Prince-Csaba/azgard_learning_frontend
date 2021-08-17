@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../App';
 import { Link } from 'react-router-dom';
-/* import { AiFillGoogleCircle } from 'react-icons/ai';
- */
+import { AiFillGoogleCircle } from 'react-icons/ai';
 
 function Navbar({ setUser }) {
   const user = useContext(UserContext);
@@ -22,17 +21,18 @@ function Navbar({ setUser }) {
             <h3>{user.full_name}</h3>
           </Link>
           <div>
-            <Link to='/calendar'>CALENDAR</Link>
+            <Link to='/hello'>Hello</Link>
+            <Link to='/basicCourse'>Képzések</Link>
             <Link to='/' onClick={logout}>
-              SIGN OUT
+              Kijelentkezés
             </Link>
           </div>
         </>
       ) : (
         <>
           <Link to='/googleauth' className='google-button'>
-            {/*             <AiFillGoogleCircle />
- */}            Login with Google
+            <AiFillGoogleCircle />
+            Login with Google
           </Link>
           <div>
             <Link to='/'>HOME</Link>

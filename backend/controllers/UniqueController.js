@@ -2,7 +2,6 @@ const jwt_decode = require('jwt-decode');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
-
 exports.uniqueUser = async (data, res) => {
   const usertoken = jwt_decode(data.id_token);
 
@@ -12,8 +11,21 @@ exports.uniqueUser = async (data, res) => {
     const user = new User({
       google_id: usertoken.sub,
       full_name: usertoken.name,
+      given_name: usertoken.given_name,
       email: usertoken.email,
       picture: usertoken.picture,
+      basic_class: [
+        "Act",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+        "Next",
+      ]
     });
 
     await user.save();
@@ -24,6 +36,6 @@ exports.uniqueUser = async (data, res) => {
   // Create and assign a token
   const token = jwt.sign({ google_id: usertoken.sub, full_name: usertoken.name, email: usertoken.email, picture: usertoken.picture }, process.env.TOKEN_SECRET, { expiresIn: 60 * 60 });
 
-  console.log(token);
+  console.log(`This is the token: ${token}`);
   res.send(token);
 };

@@ -20,6 +20,16 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  given_name: {
+    type: String,
+  },
+  level: {
+    type: Number,
+  },
+  basic_class: {
+    type: Object,
+    required: true,
   }
 });
 

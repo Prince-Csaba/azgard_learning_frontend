@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from '../App';
+
 
 function Lesson(props) {
+  const user = useContext(UserContext);
+
   const [opened, setOpened] = useState(false);
 
   let lessonStatus = props.classStatus.thisUser[props.index];

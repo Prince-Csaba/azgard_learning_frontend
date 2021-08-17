@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserContext } from '../App';
 import Lesson from './Lesson';
 
-
-
 function BasicCourse(props) {
+  const user = useContext(UserContext);
+
   const [course, setCourse] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
   let lesson;
-  console.log(props.user);
+  console.log(user.email);
 
   useEffect(() => {
     fetch('http://localhost:8000/api/lessons')
@@ -34,7 +35,7 @@ function BasicCourse(props) {
     course ?
       <div>
         < h1 > {course.title}</h1 >
-        {course && course.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} index={index} classStatus={props.user} /> })}
+        {course && course.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} index={index} classStatus={user.basic_class} /> })}
       </div >
       :
       <div>Kérem várjon, amíg a tananyag betöltődik</div>

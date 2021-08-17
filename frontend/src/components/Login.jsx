@@ -12,8 +12,9 @@ function Login(props) {
       .post('http://localhost:8000/api/login', { code })
       .then((res) => {
         console.log(`Token: ${res.data.token}`)
-        localStorage.setItem('jwt', res.data.token);
-        history.push('/');
+        console.log(`Res: ${res.data}`)
+        localStorage.setItem('jwt', res.data);
+        history.push('/hello');
         history.go(0);
       })
       .catch((err) => console.log(err.response));

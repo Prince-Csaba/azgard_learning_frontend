@@ -5,6 +5,7 @@ import MainScreen from './components/MainScreen';
 import CoursesScreen from './components/CoursesScreen';
 import BasicCourse from './components/BasicCourse';
 import Home from './components/Home';
+import Hello from './components/Hello';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 
@@ -12,11 +13,7 @@ import jwt_decode from 'jwt-decode';
 
 export const UserContext = createContext(null);
 
-
-
 function App() {
-
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -26,11 +23,7 @@ function App() {
   //fetch user data
   const [user, setUser] = useState(false);
 
-  const login = () => {
-    window.location.href = googleUrl;
-  }
-
-/*    useEffect(() => {
+    useEffect(() => {
     let token = localStorage.getItem('jwt');
 
     try {
@@ -46,7 +39,7 @@ function App() {
     } catch (error) {
       return;
     }
-  }, []); */
+  }, []);
 
 
   return (
@@ -58,9 +51,9 @@ function App() {
             {user ? (
               <>
                 <Route path='/' exact component={Home}></Route>
-{/*                 <Route path='/calendar' exact component={Calendar}></Route>
-                <Route path='/listcalendar' exact component={ListCalendar}></Route>
-                <Route path='/addcalendar' exact component={AddCalendar}></Route>
+                <Route path='/hello' exact component={Hello}></Route>
+                <Route path='/basicCourse' exact component={BasicCourse}></Route>
+{/*                <Route path='/addcalendar' exact component={AddCalendar}></Route>
                 <Route path='/getgroups' exact component={GetGroups}></Route> */}
 {/*                 <Route
                   path='/eventList'

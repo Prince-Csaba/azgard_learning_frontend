@@ -6,7 +6,7 @@ exports.googleLogin = (req, res) => {
 
   const url = 'https://oauth2.googleapis.com/token';
 
-  console.log(code)
+  console.log(`This is the code: ${code}`)
 
   const body = {
     code,
