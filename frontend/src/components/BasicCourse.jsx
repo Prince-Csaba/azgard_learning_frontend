@@ -10,7 +10,8 @@ function BasicCourse(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
-  const [lessonStatus, setLessonstatus] = useState("start");
+  const [progress, setProgress] = useState("start");
+  const [changed, setChanged] = useState(false);
 
   let lesson;
   console.log(user.email);
@@ -19,11 +20,11 @@ function BasicCourse(props) {
     axios
       .post('http://localhost:8000/api/progress', user.email)
       .then((res) => {
-        setLessonstatus(res.data)
+        setProgress(res.data)
         console.log(`This is the user progress: ${res.data}`)
       })
       .catch((err) => console.log(err.response));
-  }, [])
+  }, [changed])
 
   useEffect(() => {
     fetch('http://localhost:8000/api/lessons')
@@ -41,15 +42,14 @@ function BasicCourse(props) {
       )
   }, [])
 
-  lessonStatus && console.log(lessonStatus);
+  progress && console.log(progress);
 
   return (
 
     course ?
       <div>
-        This are the lessons
-        {/*         < h1 > {course.title}</h1 >
-        {course && course.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} index={index} classStatus={user.basic_class} /> })} */}
+        < h1 className="title"> {course.title}</h1 >
+        {course && course.lessons.map((lesson, index) => { return <Lesson title={lesson.title} text={lesson.text} key={index} index={index} progress={progress} setProgress={setProgress} changed={changed} setChanged={setChanged} /> })}
       </div >
       :
       <div>Kérem várjon, amíg a tananyag betöltődik</div>

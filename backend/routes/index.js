@@ -4,6 +4,7 @@ const { googleLogin } = require('../controllers/LoginController');
 
 const { getLessons } = require('../controllers/GetLessons');
 const { getProgress } = require('../controllers/GetProgress');
+const { setProgress } = require('../controllers/SetProgress');
 
 const courses = require('../old/file/courses.json');
 const User = require("../models/user.model");
@@ -24,6 +25,8 @@ router.get('/', function(req, res, next) {
 router.get('/api/lessons', getLessons);
 
 router.post('/api/progress', getProgress);
+
+router.post('/api/setprogress', setProgress);
 
 router.post('/api/login', googleLogin);
 

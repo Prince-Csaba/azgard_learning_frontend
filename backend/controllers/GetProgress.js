@@ -5,9 +5,9 @@ exports.getProgress = async (req, res) => {
 
   console.log("Google email:", email);
 
-  const UserProgress = await User.find({email})
-  console.log(UserProgress[0].basic_class)
+  const userProgress = await User.find({email})
+  console.log(userProgress[0].basic_class)
 
-  return res.json(UserProgress[0].basic_class)
+  return res.json(userProgress[0].basic_class)
 }
 
