@@ -1,15 +1,13 @@
-/* const User = require("../models/user.model"); */
+const User = require("../models/user.model");
 
 exports.getProgress = async (req, res) => {
-  const google_id = req.body;
+  const email = Object.keys(req.body)[0];
 
-  console.log(req.body.google_id);
+  console.log("Google email:", email);
 
-/*   const UserProgress = await User.find({user_id})
-  console.log(UserProgress)
- */
-  return res.json(req.body)
-/*   return res.json(UserProgress) */
+  const UserProgress = await User.find({email})
+  console.log(UserProgress[0].basic_class)
 
+  return res.json(UserProgress[0].basic_class)
 }
 
