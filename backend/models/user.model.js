@@ -1,5 +1,31 @@
 const mongoose = require("mongoose");
 
+const foundationSchema = new mongoose.Schema({
+   foundations: {
+    type: Array,
+    default: [
+      "Act",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+    ],
+  }
+})
+
+
+const courseSchema = new mongoose.Schema({
+  foundations : {
+    type: foundationSchema,
+    default: () => ({})
+  }
+});
+
 const userSchema = new mongoose.Schema({
   google_id: {
     type: String,
@@ -30,6 +56,10 @@ const userSchema = new mongoose.Schema({
   basic_class: {
     type: Object,
     required: true,
+  },
+  courses: {
+    type: foundationSchema,
+    default: () => ({})
   }
 });
 

@@ -13,19 +13,7 @@ exports.uniqueUser = async (data, res) => {
       full_name: usertoken.name,
       given_name: usertoken.given_name,
       email: usertoken.email,
-      picture: usertoken.picture,
-      basic_class: [
-        "Act",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-        "Next",
-      ]
+      picture: usertoken.picture
     });
 
     await user.save();
