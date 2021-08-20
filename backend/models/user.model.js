@@ -18,7 +18,6 @@ const foundationSchema = new mongoose.Schema({
   }
 })
 
-
 const courseSchema = new mongoose.Schema({
   foundations : {
     type: foundationSchema,
@@ -49,6 +48,10 @@ const userSchema = new mongoose.Schema({
   },
   given_name: {
     type: String,
+  },
+  nick_name: {
+    type: String,
+    default: "*"
   },
   level: {
     type: Number,

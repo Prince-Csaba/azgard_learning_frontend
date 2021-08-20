@@ -1,4 +1,6 @@
 import React from 'react';
+import Quote from './Quote';
+import { Link } from 'react-router-dom';
 
 function Hello() {
   return (
@@ -8,10 +10,8 @@ function Hello() {
         De ne feledd, csak a bátrak jutnak a Valhallába!<br />
         Csakis a félelem meg a tunyaság az ellenséged! <br />
         Vágj bele hát, és találkozunk Odin asztalánál!</h3>
-      <p>random idézet</p>
-      <button>
-        Tanfolyamok
-      </button>
+      <Quote />
+      <Link to='/basicCourse'>Képzések</Link>
     </div>
   );
 }
