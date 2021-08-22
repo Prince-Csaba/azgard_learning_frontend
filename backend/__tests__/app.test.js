@@ -9,10 +9,11 @@ const Lesson = require('../models/lesson.model');
 const Quote = require('../models/quote.model');
 
 //Some basic tests
-/* test("Testing to see if Jest works", () => {
+test("Testing to see if Jest works", () => {
 	expect(1).toBe(1);
-}); */
+});
 
+//nr 1
 test(`Testing the endpoint '/', to see if the server works, and wants to get {"title": "Express"} response`, async () => {
 	const response = await request.get("/");
 
@@ -39,11 +40,11 @@ describe("testing some database-connected cases", () => {
       nr: 1,
       quote: "Bigger is always better"
     }, 
-/* 		{ 
+ 		{ 
       nr: 2,
       quote: "Suit up!"
     }
- */		);
+ 		);
   }  
 	
 		const fillLesson = async () => {
@@ -69,18 +70,20 @@ describe("testing some database-connected cases", () => {
     	});
   	}
 
+	//nr 2
   test(`Testing the endpoint '/api/quote', should return status 404, because the db is still empty`, async () => {
     const response = await request.get("/api/quote");
     expect(response.status).toBe(404);
   });
 
+	//nr 3
   test(`Testing the endpoint '/api/quote', works when there is a document in the quotes`, async () => {
     await fillQuote();
     const response = await request.get("/api/quote");
     expect(response.status).toBe(200);
-		expect(response.body).toBe("Bigger is always better")
   });
 
+	//nr 4
   test(`Testing the endpoint '/api/lesson', returns a value`, async () => {
     await fillLesson();
     const response = await request.get("/api/lessons");
@@ -88,28 +91,124 @@ describe("testing some database-connected cases", () => {
 		expect(response.body).not.toBe({});
   });
 
-	//check later - db document is wrong
-	test(`Testing the endpoint '/api/progress', returns response when when a proper email is sent in te request`, async () => {
-    const response = await request.post("/api/getProgress").send("barney@stinson.cool");
-    console.log(response.body);
-		expect(response.status).toBe(404);
-/* 		expect(response.body).not.toBe({}); */
+//nr 5
+	test(`Testing the endpoint '/api/progress', returns error: "e-mail is missing" when there is no email sent in te request`, async () => {
+			const data = {
+				email: "",
+			};
+			const response = await request.post("/api/progress").send(data);
+			expect(response.status).toBe(404);
+			expect(response.body.error).toBe("e-mail is missing");
+		});
+		
+	//nr 6
+	test(`Testing the endpoint '/api/setprogress', returns response when when a proper email is sent`, async () => {
+    fillUser();
+		const data = {
+			email: "barney@stinson.cool",
+		};
+		const response = await request.post("/api/progress").send(data);
+		console.log(response.body);
+		expect(response.status).toBe(200);
+ 		expect(response.body).not.toBe({}); 
   });
 
-	//check later - db document is wrong
- 	test(`Testing the endpoint '/api/progress', returns error: "e-mail isd missing" when there is no email sent in te request`, async () => {
-    const response = await request.post("/api/getProgress").send("");
-    console.log(response.body);
+	//nr 7
+	test(`Testing the endpoint '/api/setprogress', returns error: "e-mail is missing" when there is no email sent in te request`, async () => {
+		const data = {
+			email: "",
+		};
+		const response = await request.post("/api/setprogress").send(data);
+		console.log(response.body);
 		expect(response.status).toBe(404);
-		//expect(response.body.error).toBe("e-mail is missing");
+ 		expect(response.body.error).toBe("e-mail is missing"); 
   });
 
-	
+	//nr 8
+ 	test(`Testing the endpoint '/api/setprogress', returns error: "progress array is missing" when there is no progress array sent in te request`, async () => {
+		const data = {
+			email: "barney@stinson.cool",
+			progress: ""
+		};
+		const response = await request.post("/api/setprogress").send(data);
+		console.log(response.body);
+		expect(response.status).toBe(404);
+ 		expect(response.body.error).toBe("progress array is missing"); 
+  });
+
+	//nr 9
+	test(`Testing the endpoint '/api/setprogress', returns "Progress Set" response when when a proper email and progress array is sent`, async () => {
+    fillUser();
+		const data = {
+			email: "barney@stinson.cool",
+			progress: []
+		};
+		const response = await request.post("/api/setprogress").send(data);
+		console.log(response.body);
+		expect(response.status).toBe(200);
+ 		expect(response.body.data).toBe("Progress Set"); 
+  });
+
+	//nr 10
+	test("If User collection is empty, it should return an empty array", async () => {
+		const allUser = await User.find();
+
+		expect(allUser).toEqual([]);
+	});
+
+		//nr 11
+	test("If Lesson collection is empty, it should return an empty array", async () => {
+		const allLessons = await Lesson.find();
+
+		expect(allLessons).toEqual([]);
+	});
+
+		//nr 12
+	test("If Quote collection is empty, it should return an empty array", async () => {
+		const allQuotes = await Quote.find();
+
+		expect(allQuotes).toEqual([]);
+	});
+
+	//nr 13
+	test(`If I save two quotes in the collection, it should return an array with length of 2`, async () => {
+		await fillQuote();
+		const allQuotes = await Quote.find();
+		console.log(allQuotes);
+		expect(allQuotes.length).toBe(2);
+	});
+
+	//nr 14
+		test(`Test if the lesson progress array is changing at the next query if i update is using the setprogress endpoint`, async () => {
+			await fillUser();
+			const data = {
+				email: "barney@stinson.cool",
+			};
+			const progress = await request.post("/api/progress").send(data);
+			expect(progress.body[0]).toBe("our class");
+
+			const change = {
+				email: "barney@stinson.cool",
+				progress: "Barney is already cool, he does not needs any class"
+			};
+			const update = await request.post("/api/setprogress").send(change);
+			expect(update.status).toBe(200);
+ 			expect(update.body.data).toBe("Progress Set");
+
+			const final = {
+				email: "barney@stinson.cool",
+			};
+			const newdata = await request.post("/api/progress").send(data);
+			expect(newdata.body[0]).toBe("Barney is already cool, he does not needs any class");
+	});
 
 
 
- 	afterEach(async () => {
+
+	afterEach(async () => {
 		await Quote.deleteMany();
+		await User.deleteMany();
+		await Lesson.deleteMany();
 		});
 
 	afterAll(async () => {
