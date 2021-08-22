@@ -26,18 +26,24 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 
 3. Install the dependencies
   * Backend
-    Change working directory to ../backend, than run npm install command
+    Inside the projects directory, change working directory to ../backend, than run npm install command
     ```
-      $ cd ../lorem
+      $ cd ../backend
       $ npm install
-      $ npm start
     ```
   * Frontend
-    Change working directory to ../frontend, than run npm install command
+    Inside the projects directory, change working directory to ../frontend, than run npm install command
+    ```
+      $ cd ../backend
+      $ npm install
+    ```
 
-  -in case of not having NodeJS on your computer, you have install the NodeJS for the backend (see documentation at https://nodejs.org/)
+   *in case of not having NodeJS on your computer, you have install the NodeJS for the backend (see documentation at https://nodejs.org/)
 
-  -to run in a proper way, you have to build the react app into html+css by running the npm run build command
+  *to run in a proper way, you have to build the frontend react app into html+css by running the npm run build command
+    ```
+      $ npm run build
+    ```
 
  ## Configure the .env variables
 
