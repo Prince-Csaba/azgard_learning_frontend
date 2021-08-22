@@ -1,20 +1,17 @@
 ### Tracking learning progress (MERN based school project)
 
-## Technologies:
+## Main technologies:
 
-![](https://img.shields.io/badge/Node%20JS-12.22.5-brightgreen)
-![](https://img.shields.io/badge/Express%20JS-4.16.1-lightgrey)
-![](https://img.shields.io/badge/Javascript-ES6-yellow)
-
-
-Axios
-morgan
-json web token
-![](https://img.shields.io/badge/Jest-27.0.6-yellowgreen)
-![](https://img.shields.io/badge/Mongoose-5.13.5-%237C0A02)
-![](https://img.shields.io/badge/React-17.0.1-blue)
 ![](https://img.shields.io/badge/MongoDB-1.0.0-red)
+![](https://img.shields.io/badge/Express%20JS-4.16.1-lightgrey)
+![](https://img.shields.io/badge/React-17.0.1-blue)
+![](https://img.shields.io/badge/Node%20JS-12.22.5-brightgreen)
+![](https://img.shields.io/badge/Mongoose-5.13.5-%237C0A02)
+![](https://img.shields.io/badge/Javascript-ES6-yellow)
+![](https://img.shields.io/badge/Jest-27.0.6-yellowgreen)
+![](https://img.shields.io/badge/Axios-0.21.1-purple)
 ![](https://img.shields.io/badge/CORS-2.8.5-lightgrey)
+![](https://img.shields.io/badge/Jwt-8.5.1-purple)
 ![](https://img.shields.io/badge/Morgan-1.9.1-lightblue)
 
 ## Introduction:
