@@ -23,9 +23,9 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 * [Technologies](#technologies)
 * [Introduction](#introduction)
 * [Installations](#installation)
-* [Configure .env variables](#setup)
-* [Launch via Docker](#setup)
-* [API Documentation](#setup)
+* [Configure .env variables](#Configure)
+* [Launch via Docker](#Launch)
+* [API Documentation](#API)
 
 
 
