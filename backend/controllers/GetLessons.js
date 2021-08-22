@@ -5,5 +5,5 @@ exports.getLessons =  async (req, res, next) => {
   myClasses = await Lesson.find({});
   myClasses = myClasses[0];
   console.log(myClasses);
-  res.json({ myClasses });
-};
+  res.status(200).json({ myClasses });
+}

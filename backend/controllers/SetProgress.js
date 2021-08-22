@@ -8,6 +8,6 @@ exports.setProgress = async (req, res) => {
   await userProgress.save()
   console.log(userProgress)
 
-  return res.json({ data: "Progress Set"})
+  return res.status(200).json({ data: "Progress Set"})
 }
 

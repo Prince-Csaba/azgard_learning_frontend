@@ -7,7 +7,7 @@ function Home() {
     <div>
       <h1>Home</h1>
       <h3>Kérlek, jelentkezz be</h3>
-      <Quote />
+      <Quote className="quote" />
     </div>
   );
 }

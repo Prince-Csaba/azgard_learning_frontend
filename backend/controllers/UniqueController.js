@@ -25,5 +25,5 @@ exports.uniqueUser = async (data, res) => {
   const token = jwt.sign({ google_id: usertoken.sub, full_name: usertoken.name, email: usertoken.email, picture: usertoken.picture }, process.env.TOKEN_SECRET, { expiresIn: 60 * 60 });
 
   console.log(`This is the token: ${token}`);
-  res.send(token);
+  res.status(200).send(token);
 };

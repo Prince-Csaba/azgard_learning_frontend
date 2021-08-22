@@ -10,7 +10,7 @@ exports.getQuote =  async (req, res, next) => {
     Quote.findOne().skip(random).exec(
       function (err, result) {
         console.log(result.quote) 
-        res.json(result.quote);
+        res.status(200).json(result.quote);
       })
   })
 };

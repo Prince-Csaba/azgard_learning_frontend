@@ -3,11 +3,16 @@ const User = require("../models/user.model");
 exports.getProgress = async (req, res) => {
   const email = Object.keys(req.body)[0];
 
+  if (!email) {
+    return res.status(404).json({error: "e-mail is missing"});
+  }
+
   console.log("Google email:", email);
 
-  const userProgress = await User.find({email})
-  console.log(userProgress[0].courses.foundations)
+  const userProgress = await User.findOne({email})
+  
+  console.log(userProgress.courses.foundations)
 
-  return res.json(userProgress[0].courses.foundations)
+  return res.status(200).json(userProgress.courses.foundations)
 }
 
