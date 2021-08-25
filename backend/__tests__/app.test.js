@@ -70,7 +70,7 @@ describe("testing some database-connected cases", () => {
     	});
   	}
 
-	//nr 2
+ //nr 2
   test(`Testing the endpoint '/api/quote', should return status 404, because the db is still empty`, async () => {
     const response = await request.get("/api/quote");
     expect(response.status).toBe(404);
@@ -83,7 +83,13 @@ describe("testing some database-connected cases", () => {
     expect(response.status).toBe(200);
   });
 
-	//nr 4
+	test(`Testing the endpoint '/api/lesson', returns error when the lesson db is empty`, async () => {
+    const response = await request.get("/api/lessons");
+		expect(response.status).toBe(404);
+		expect(response.body.error).toBe("no lessons found");
+  });
+
+ 	//nr 4
   test(`Testing the endpoint '/api/lesson', returns a value`, async () => {
     await fillLesson();
     const response = await request.get("/api/lessons");
@@ -91,7 +97,7 @@ describe("testing some database-connected cases", () => {
 		expect(response.body).not.toBe({});
   });
 
-//nr 5
+	//nr 5
 	test(`Testing the endpoint '/api/progress', returns error: "e-mail is missing" when there is no email sent in te request`, async () => {
 			const data = {
 				email: "",
@@ -201,7 +207,6 @@ describe("testing some database-connected cases", () => {
 			const newdata = await request.post("/api/progress").send(data);
 			expect(newdata.body[0]).toBe("Barney is already cool, he does not needs any class");
 	});
-
 
 
 
