@@ -59,6 +59,18 @@ const userSchema = new mongoose.Schema({
   basic_class: {
     type: Object,
     required: true,
+    default: [
+      "Act",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+      "Next",
+    ]
   },
   courses: {
     type: foundationSchema,

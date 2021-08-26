@@ -20,6 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+const { fillCourses } = require('./controllers/FillCourses');
+const { fillQuotes } = require('./controllers/FillQuotes');
+fillCourses();
+fillQuotes();
+
 /* app.use('/api', indexRouter); */
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

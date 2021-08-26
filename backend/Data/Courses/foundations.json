@@ -1,8 +1,5 @@
-[{
-  "_id": {
-    "$oid": "610bcc5de2326e944117a5ce"
-  },
-  "title": "Alapképzés",
+{
+  "title": "Alapképzés2",
   "lessons": [
     {
       "title": "Első lecke",
@@ -13,8 +10,8 @@
       "text": "Lorem ipsum secundus"
     },
     {
-      "title": "Harmadik lecke",
+      "title": "Negyedik lecke lecke",
       "text": "text: Lorem ipsum tersius"
     }
   ]
-}]
+}

@@ -8,7 +8,7 @@ const { getQuote } = require('../controllers/GetQuote');
 const { getProgress } = require('../controllers/GetProgress');
 const { setProgress } = require('../controllers/SetProgress');
 
-const { fillCourses } = require('../controllers/FillCourses');
+/* const { fillCourses } = require('../controllers/FillCourses'); */
 const courses = require('../old/file/courses.json');
 
 const User = require("../models/user.model");
@@ -28,7 +28,7 @@ router.post('/api/setprogress', setProgress);
 
 router.post('/api/login', googleLogin);
 
-router.get('/api/fillcourse', fillCourses);
+/* router.get('/api/fillcourse', fillCourses); */
 
 /* express.use(express.static('file')); 
 router.get('/old', (req, res) => {
