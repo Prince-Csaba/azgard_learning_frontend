@@ -27,10 +27,7 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 * [Launch via Docker](#Launch_the_application_via_Docker)
 * [API Documentation](#API_Documentation)
 
-
-
-
-## Launh for production (via Docker)
+## Launch for production (via Docker)
 
 1. Fork the github repository:
 
@@ -58,9 +55,48 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
     $ docker run -d -p 3000:80 --name react-app trainingfront:latest
     ```
 
+5. Build the docker image of the backend:
+    Set the backend directory as your working directory
+    ```
+    cd backend
+    ```
+    If already in backend directory, build the docker image by running this command in your terminal:
+    ```
+    $ docker build -t trainingback .
+    ```
+    Optional: you can check your docker images with the command above to see if the image was created correctly:
+    ```
+    $ docker images
+    ```
+    You can run the image:
+    ```
+    $ docker run -d -p 8000:8000 --name react-app trainingback:latest
+    ```
+6. Run the aplication by docker-compose:
+    As you built the frontend and backend docker images, time come to run the aplication.
+    Type the following command into your console:
+    ```
+    $ docker-compose up
+    ```
+
+7. Stop the application whenever you want:
+    ```
+    $ docker-compose stop
+    ```
+
+## Launch for development
+
+1. Fork the github repository:
+
+2. Clone the github repo to your pc.
+    ```
+      $ git clone {insert the name of your repository here}
+    ```
+3. Check for the .env variable, if it does not exist, create as described in step [Configure .env variables](#Configure_the_env_variable)
+
 3. Install the dependencies
   * Backend
-    Inside the projects directory, change working directory to ../backend, than run npm install command
+    Inside the projects directory, change working directory to /backend, than run npm install command
     ```
       $ cd ../backend
       $ npm install
@@ -71,13 +107,13 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
       $ cd ../backend
       $ npm install
     ```
-
    *in case of not having NodeJS on your computer, you have install the NodeJS for the backend (see documentation at https://nodejs.org/)
 
-  *to run in a proper way, you have to build the frontend react app into html+css by running the npm run build command
-    ```
-      $ npm run build
-    ```
+4. Start the application:
+  You can start the application by running npm start command both in frontend and in backend directories
+  ```
+  npm start
+  ``` 
 
  ## Configure the .env variables
 
