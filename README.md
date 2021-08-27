@@ -30,11 +30,33 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 
 
 
-## Installation
+## Launh for production (via Docker)
 
 1. Fork the github repository:
 
 2. Clone the github repo to your pc.
+    ```
+      $ git clone {insert the name of your repository here}
+    ```
+3. Check for the .env variable, if it does not exist, create as described in step [Configure .env variables](#Configure_the_env_variable)
+
+4. Build the docker image of the frontend:
+    Set the frontend directory as your working directory
+    ```
+    cd frontend
+    ```
+    If already in frontend directory, build the docker image by running this command in your terminal:
+    ```
+    $ docker build -t trainingfront .
+    ```
+    Optional: you can check your docker images with the command above to see if the image was created correctly:
+    ```
+    $ docker images
+    ```
+    You can run the image:
+    ```
+    $ docker run -d -p 3000:80 --name react-app trainingfront:latest
+    ```
 
 3. Install the dependencies
   * Backend
