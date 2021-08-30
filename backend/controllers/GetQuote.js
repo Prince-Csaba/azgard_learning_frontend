@@ -1,6 +1,6 @@
 const Quote = require("../models/quote.model");
 
-exports.getQuote =  async (req, res, next) => {
+exports.getQuote =  async (req, res) => {
   Quote.countDocuments().exec(function (err, count) {
     if (count === 0) {
       return res.status(404).json({error: "No db entry"})
