@@ -12,8 +12,8 @@ exports.fillQuotes =  async (req, res) => {
         upsert: true
       });
     });
-  //  res.status(200).json({data: "Quotes Set"})
   } catch (err) {
-  console.error(err)
+    console.error(err)
   }
+  if (res) res.status(200).json({data: "Quotes Set"})
 }

@@ -11,28 +11,28 @@ const { setProgress } = require('../controllers/SetProgress');
 const { fillCourses } = require('../controllers/FillCourses');
 const { fillQuotes } = require('../controllers/FillQuotes');
 
+const { testController } = require('../controllers/TestController');
+
 const courses = require('../old/file/courses.json');
 
 const User = require("../models/user.model");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.status(200).json({ title: 'Express' });
-});
+router.get('/test', testController);
 
-router.get('/api/lessons', getLessons);
+router.get('/lessons', getLessons);
 
-router.get('/api/quote', getQuote);
+router.get('/quote', getQuote);
 
-router.post('/api/progress', getProgress);
+router.post('/progress', getProgress);
 
-router.post('/api/setprogress', setProgress);
+router.post('/setprogress', setProgress);
 
-router.post('/api/login', googleLogin);
+router.post('/login', googleLogin);
 
-router.get('/api/fillcourses', fillCourses);
+router.get('/fillcourses', fillCourses);
 
-router.get('/api/fillquotes', fillQuotes);
+router.get('/fillquotes', fillQuotes);
 
 /* express.use(express.static('file')); 
 router.get('/old', (req, res) => {

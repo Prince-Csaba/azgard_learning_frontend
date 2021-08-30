@@ -14,12 +14,12 @@ test("Testing to see if Jest works", () => {
 });
 
 //nr 1
-test(`Testing the endpoint '/', to see if the server works, and wants to get {"title": "Express"} response`, async () => {
-	const response = await request.get("/");
+test(`Testing the endpoint '/test', to see if the server works, and wants to get {"title": "Express generator server is on"} response`, async () => {
+	const response = await request.get("/api/test");
 
 	expect(response.status).toBe(200);
 	expect(response.status).not.toBe(304);
-	expect(response.body).toStrictEqual({"title": "Express"});
+	expect(response.body).toStrictEqual({"title": "Express generator server is on"});
 });
 
 describe("testing some database-connected cases", () => {
@@ -162,7 +162,7 @@ describe("testing some database-connected cases", () => {
 		expect(allUser).toEqual([]);
 	});
 
-		//nr 11
+	//nr 11
 	test("If Lesson collection is empty, it should return an empty array", async () => {
 		const allLessons = await Lesson.find();
 

@@ -1,4 +1,4 @@
-### Tracking learning progress (MERN based school project)
+# Tracking learning progress (MERN based school project)
 
 ## Main technologies
 
@@ -20,13 +20,14 @@ This web aplication is a small school project, its main task is to track the pro
 The ideea behind the project is to be an MVP, so it contains all the basic, and most important features, and it is easy to fill with lessons and easy to scale up with the understanding of the logic behind the project.
 
 ## Table of contents
-- [Main technologies](#main-technologies)
-- [Introduction](#introduction)
-- [Table of contents](#table-of-contents)
-- [Launch for production (via Docker)](#launch-for-production-via-docker)
-- [Launch for development](#launch-for-development)
-- [Configure the .env variable](#configure-the-env-variable)
-- [API Documentation](#api-documentation)
+- [Tracking learning progress (MERN based school project)](#tracking-learning-progress-mern-based-school-project)
+  - [Main technologies](#main-technologies)
+  - [Introduction](#introduction)
+  - [Table of contents](#table-of-contents)
+  - [Launch for production (via Docker)](#launch-for-production-via-docker)
+  - [Launch for development](#launch-for-development)
+  - [Configure the .env variable](#configure-the-env-variable)
+  - [API Documentation](#api-documentation)
 
 ## Launch for production (via Docker)
 
@@ -118,15 +119,9 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 
  ## Configure the .env variable
 
-  *Backend (you can copy the sample code above)
-  ```
-    PORT=8000
-    MONGODB_URI="mongodb://127.0.0.1:27017/azgard"
-    TOKEN_SECRET = thisisasecrettoken
-    CLIENT_ID = 657899331675-fr3vkhlvd1836sd7t1id2c9ik2pu3hen.apps.googleusercontent.com
-    CLIENT_SECRET = lQmYXb9e8sf85S0ZbIZruuDN
-  ```
+  Fill in your data in .env.template files at both backend&frontend and rename to .env
+  Google console infos at: Obtain OAuth 2.0 credentials at [Google API Console](https://console.cloud.google.com)
 
-## API Documentation
+  ## API Documentation
 
-  For swagger documentation type the url to your browser:
+  You can find the endpoint documentation at: /backend/docs/api_documentation.yaml

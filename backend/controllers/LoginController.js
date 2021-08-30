@@ -10,8 +10,8 @@ exports.googleLogin = (req, res) => {
 
   const body = {
     code,
-    client_id: '657899331675-fr3vkhlvd1836sd7t1id2c9ik2pu3hen.apps.googleusercontent.com',
-    client_secret: 'lQmYXb9e8sf85S0ZbIZruuDN',
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
     redirect_uri: 'http://localhost:3000/login',
     grant_type: 'authorization_code',
   };

@@ -10,6 +10,8 @@ servers:
   - url: http://localhost:8000/api
 
 tags:
+- name: "test"
+  description: "Test endpoint"
 - name: "lessons"
   description: "What you can do with lessons"
 - name: "quotes"
@@ -18,13 +20,42 @@ tags:
   description: "Operations about user, including the lesson statuses, nicknames, preferred quotes"
 
 paths:
+  /test:
+    get:
+      tags:
+      - "test"
+      summary: Test endpoint to test that the server is on.
+      description: ""
+      responses:
+        "200":    # status code
+          description: "successful test, a json with a message"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Express generator server is on"
+        "404":  # status code
+          description: "no lessons found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "No lessons found."
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
+
   /lessons:
     get:
       tags:
       - "lessons"
       summary: Get the lessons of a course.
       description: In this moment you can get only the lessons of the basic course, but in never versions, you can choose between the courses
-      operationId: "addPet"
       responses:
         "200":    # status code
           description: "successful operation, an array with the classes"
@@ -44,6 +75,8 @@ paths:
                   error:
                     type: string
                     example: "No lessons found."
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
   /fillCourses:
     get:
       tags:
@@ -62,6 +95,8 @@ paths:
                   $ref: "#/components/schemas/Lesson"
         "404":  # status code
           description: "no lessons courses found"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
 
   /quotes:
     get:
@@ -78,6 +113,8 @@ paths:
                 $ref: "#/components/schemas/Quote"
         "404":  # status code
           description: "no quotes found"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
   /fillQuotes:
     get:
       tags:
@@ -96,7 +133,35 @@ paths:
                   $ref: "#/components/schemas/Quote"
         "404":  # status code
           description: "no quotes found"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
 
+
+  /login:
+    post:
+      tags:
+      - "user"
+      summary: Google login endpoint
+      description: Sends the code to the google and saves the user data sent from the google and creates a jwt signed token and sends it back to frontend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Google auth code
+      responses:
+        "200":    # status code
+          description: "successful operation, a jwt token with the user informations"
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
 
   /progress:
     post:
@@ -234,3 +299,12 @@ components:
             type: "string"
       xml:
         name: "User"
+        
+  responses:
+    ServerError:
+      description: Server error
+      content:
+        text/html:
+          schema: 
+            type: "string"
+            example: error

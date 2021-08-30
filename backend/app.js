@@ -26,7 +26,7 @@ fillCourses();
 fillQuotes();
 
 /* app.use('/api', indexRouter); */
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

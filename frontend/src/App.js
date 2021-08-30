@@ -41,7 +41,6 @@ function App() {
     }
   }, []);
 
-
   return (
     <Router>
       <UserContext.Provider value={user}>
@@ -53,15 +52,6 @@ function App() {
                 <Route path='/' exact component={Home}></Route>
                 <Route path='/hello' exact component={Hello}></Route>
                 <Route path='/basicCourse' exact component={BasicCourse}></Route>
-{/*                <Route path='/addcalendar' exact component={AddCalendar}></Route>
-                <Route path='/getgroups' exact component={GetGroups}></Route> */}
-{/*                 <Route
-                  path='/eventList'
-                  exact
-                  component={() => {
-                    return <EventList user={user} />;
-                  }}></Route>
-                <Route path='/event' exact component={Event}></Route> */}
               </>
             ) : (
               <>
