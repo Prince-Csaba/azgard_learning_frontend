@@ -5,16 +5,15 @@ exports.fillQuotes =  async (req, res) => {
   let data;
   try {
     data = JSON.parse(fs.readFileSync('./Data/Quotes/quotes.json', 'utf8'));
-  } catch (err) {
-    console.error(err)
-  }
   
-  data.forEach(async e => {
-    await Quotes.findOneAndUpdate(e, {quote: e.quote}, {
-      new: true,
-      upsert: true
+    data.forEach(async e => {
+      await Quotes.findOneAndUpdate(e, {quote: e.quote}, {
+        new: true,
+        upsert: true
+      });
     });
-  });
-  
-
+  //  res.status(200).json({data: "Quotes Set"})
+  } catch (err) {
+  console.error(err)
+  }
 }

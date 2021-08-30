@@ -7,6 +7,7 @@ const { getLessons } = require('../controllers/GetLessons');
 const { getQuote } = require('../controllers/GetQuote');
 const { getProgress } = require('../controllers/GetProgress');
 const { setProgress } = require('../controllers/SetProgress');
+
 const { fillCourses } = require('../controllers/FillCourses');
 const { fillQuotes } = require('../controllers/FillQuotes');
 
@@ -16,7 +17,7 @@ const User = require("../models/user.model");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.json({ title: 'Express' });
+  res.status(200).json({ title: 'Express' });
 });
 
 router.get('/api/lessons', getLessons);
@@ -29,7 +30,7 @@ router.post('/api/setprogress', setProgress);
 
 router.post('/api/login', googleLogin);
 
-router.get('/api/fillcourse', fillCourses);
+router.get('/api/fillcourses', fillCourses);
 
 router.get('/api/fillquotes', fillQuotes);
 

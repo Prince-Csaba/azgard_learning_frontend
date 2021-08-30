@@ -1,6 +1,6 @@
 const Lesson = require("../models/lesson.model");
 
-exports.getLessons =  async (req, res, next) => {
+exports.getLessons =  async (req, res) => {
   console.log('Here!!!');
   let myClasses = await Lesson.find();
   console.log("This are my classes:", myClasses);

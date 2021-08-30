@@ -1,0 +1,236 @@
+openapi: 3.0.0
+info:
+  title: Training Company Documentation
+  description: This is ... decpription Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.0
+  contact:
+    email: "bolyaicsaba@gmail.com"
+
+servers:
+  - url: http://localhost:8000/api
+
+tags:
+- name: "lessons"
+  description: "What you can do with lessons"
+- name: "quotes"
+  description: "Access to motivational quotes"
+- name: "user"
+  description: "Operations about user, including the lesson statuses, nicknames, preferred quotes"
+
+paths:
+  /lessons:
+    get:
+      tags:
+      - "lessons"
+      summary: Get the lessons of a course.
+      description: In this moment you can get only the lessons of the basic course, but in never versions, you can choose between the courses
+      operationId: "addPet"
+      responses:
+        "200":    # status code
+          description: "successful operation, an array with the classes"
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Lesson"
+        "404":  # status code
+          description: "no lessons found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "No lessons found."
+  /fillCourses:
+    get:
+      tags:
+      - "lessons"
+      summary: Fills the Courses collection from a file
+      description: Fills the Courses collection with the json from the ./Data/Courses/foundation.json file
+      operationId: "fillCourse"
+      responses:
+        "200":  # status code
+          description: "successful operation, a message: 'Courses set!'"
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Lesson"
+        "404":  # status code
+          description: "no lessons courses found"
+
+  /quotes:
+    get:
+      tags:
+      - "quotes"
+      summary: Get a motivational quote from the collection
+      description: The quote you get is randomly generated from the database, later will be based on the user's preferences
+      responses:
+        "200":    # status code
+          description: "successful operation, an object with a number and a string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+        "404":  # status code
+          description: "no quotes found"
+  /fillQuotes:
+    get:
+      tags:
+      - "quotes"
+      summary: Fills the Quotes collection from a file
+      description: Fills the Quotes collection with the json from the ./DataQuotes/quotes.json file
+      operationId: "fillQuote"
+      responses:
+        "200":  # status code
+          description: "successful operation, a message: 'Quotes set!'"
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Quote"
+        "404":  # status code
+          description: "no quotes found"
+
+
+  /progress:
+    post:
+      tags:
+      - "user"
+      summary: Get the class progress of an user
+      description: The classes are build of lessons, and the number of lessons is equal with the number of progress array element
+      requestBody:
+        description: The e-mail adress of the user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "barney@stinson.cool"
+      responses:
+        "200":    # status code
+          description: "successful operation, an array with the user's progress in the lesson"
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Google_User"
+        "404":  # status code
+          description: "e-mail is missing"
+  
+  /setprogress:
+    post:
+      tags:
+      - "user"
+      summary: Set the class progress of an user
+      description: As the user progresses with learning, updates his/her class status
+      requestBody:
+        description: The e-mail adress of the user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "barney@stinson.cool"
+                progress:
+                  type: array
+                  items:
+                    type: string
+                  example: ["Done", "Act", "Next"]
+      responses:
+        "200":    # status code
+          description: "successful operation, the user progress array is updated"
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/Google_User"
+        "404":  # status code
+          description: "e-mail is missing or progress array is missing"
+            
+components:
+  schemas:
+    Lesson:
+      type: "object"
+      required:
+      - "lessons"
+      properties:
+        title:
+          type: "string"
+        lessons:
+          type: "array"
+          items:
+            type: "string"
+    Quote:
+      type: "object"
+      required:
+      - "quote"
+      properties:
+        nr:
+          type: "integer"
+          format: "int32"
+        quote:
+          type: "string"
+    Google_User:
+      type: "object"
+      required:
+      - "google_id"
+      - "full_name"
+      - "email"
+      - "picture"
+      - "date"
+      properties:
+        google_id:
+          type: "string"
+        full_name:
+          type: "string"
+        email:
+          type: "string"
+        picture:
+          type: "string"
+        date:
+          type: "string"
+        given_name:
+          type: "string"
+        nick_name:
+          type: "integer"
+          default: "*"
+        level:
+          type: "integer"
+          format: "int32"
+        courses:
+          type: object
+    Foundations:
+      type: "object"
+      properties:
+        foundations:
+          type: "array"
+          default: [
+            "Act",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+            "Next",
+          ]
+          items:
+            type: "string"
+      xml:
+        name: "User"

@@ -1,6 +1,6 @@
 ### Tracking learning progress (MERN based school project)
 
-## Main technologies:
+## Main technologies
 
 ![](https://img.shields.io/badge/MongoDB-1.0.0-red)
 ![](https://img.shields.io/badge/Express%20JS-4.16.1-lightgrey)
@@ -14,18 +14,19 @@
 ![](https://img.shields.io/badge/Jwt-8.5.1-purple)
 ![](https://img.shields.io/badge/Morgan-1.9.1-lightblue)
 
-## Introduction:
+## Introduction
 
 This web aplication is a small school project, its main task is to track the progress of a student in a given learning path.
 The ideea behind the project is to be an MVP, so it contains all the basic, and most important features, and it is easy to fill with lessons and easy to scale up with the understanding of the logic behind the project.
 
 ## Table of contents
-* [Technologies](#technologies)
-* [Introduction](#introduction)
-* [Installations](#installation)
-* [Configure .env variables](#Configure_the_env_variable)
-* [Launch via Docker](#Launch_the_application_via_Docker)
-* [API Documentation](#API_Documentation)
+- [Main technologies](#main-technologies)
+- [Introduction](#introduction)
+- [Table of contents](#table-of-contents)
+- [Launch for production (via Docker)](#launch-for-production-via-docker)
+- [Launch for development](#launch-for-development)
+- [Configure the .env variable](#configure-the-env-variable)
+- [API Documentation](#api-documentation)
 
 ## Launch for production (via Docker)
 
@@ -35,7 +36,7 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
     ```
       $ git clone {insert the name of your repository here}
     ```
-3. Check for the .env variable, if it does not exist, create as described in step [Configure .env variables](#Configure_the_env_variable)
+3. Check for the .env variable, if it does not exist, create as described in step [Configure .env variables](#configure-the-env-variable)
 
 4. Build the docker image of the frontend:
     Set the frontend directory as your working directory
@@ -96,37 +97,35 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 
 3. Install the dependencies
   * Backend
-    Inside the projects directory, change working directory to /backend, than run npm install command
+    Inside the projects directory, change working directory to ./backend, than run npm install command
     ```
-      $ cd ../backend
+      $ cd ./backend
       $ npm install
     ```
   * Frontend
-    Inside the projects directory, change working directory to ../frontend, than run npm install command
+    Inside the projects directory, change working directory to ./frontend, than run npm install command
     ```
-      $ cd ../backend
+      $ cd ./fontend
       $ npm install
     ```
    *in case of not having NodeJS on your computer, you have install the NodeJS for the backend (see documentation at https://nodejs.org/)
 
 4. Start the application:
   You can start the application by running npm start command both in frontend and in backend directories
+    ```
+    npm start
+    ``` 
+
+ ## Configure the .env variable
+
+  *Backend (you can copy the sample code above)
   ```
-  npm start
-  ``` 
-
- ## Configure the .env variables
-
-  *Backend
-  PORT=8000
+    PORT=8000
     MONGODB_URI="mongodb://127.0.0.1:27017/azgard"
     TOKEN_SECRET = thisisasecrettoken
     CLIENT_ID = 657899331675-fr3vkhlvd1836sd7t1id2c9ik2pu3hen.apps.googleusercontent.com
     CLIENT_SECRET = lQmYXb9e8sf85S0ZbIZruuDN
-
-## Launch the application via Docker
-
-  Both at backend and frontend u can run the application by typeing: docker-compose:up
+  ```
 
 ## API Documentation
 
