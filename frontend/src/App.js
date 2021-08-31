@@ -50,7 +50,7 @@ function App() {
             {user ? (
               <>
                 <Route path='/' exact component={Home}></Route>
-                <Route path='/hello' exact component={Hello}></Route>
+                <Route path='/hello' exact component={() => <Hello setUser={setUser} />} ></Route>
                 <Route path='/basicCourse' exact component={BasicCourse}></Route>
               </>
             ) : (

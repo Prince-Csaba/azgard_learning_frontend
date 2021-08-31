@@ -13,11 +13,12 @@ const { fillQuotes } = require('../controllers/FillQuotes');
 
 const { testController } = require('../controllers/TestController');
 
+const { deleteUser } = require('../controllers/DeleteUser');
+
 const courses = require('../old/file/courses.json');
 
 const User = require("../models/user.model");
 
-/* GET home page. */
 router.get('/test', testController);
 
 router.get('/lessons', getLessons);
@@ -33,6 +34,8 @@ router.post('/login', googleLogin);
 router.get('/fillcourses', fillCourses);
 
 router.get('/fillquotes', fillQuotes);
+
+router.delete('/deleteuser', deleteUser);
 
 /* express.use(express.static('file')); 
 router.get('/old', (req, res) => {

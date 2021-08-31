@@ -16,8 +16,8 @@ exports.fillCourses =  async (req, res) => {
     upsert: true
   });
 
-//  res.status(200).json({data: "Courses Set"})
-  } catch (err) {
+} catch (err) {
   console.error(err)
-  }
+}
+  if (res) res.status(200).json({data: "Courses Set"})
 }
