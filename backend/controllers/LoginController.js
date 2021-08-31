@@ -4,6 +4,10 @@ const { uniqueUser } = require('./UniqueController');
 exports.googleLogin = (req, res) => {
   const code = req.body.code;
 
+  if (!code) {
+    return res.status(401).json({error: "Code missing"})
+  }
+
   const url = 'https://oauth2.googleapis.com/token';
 
   console.log(`This is the code: ${code}`)

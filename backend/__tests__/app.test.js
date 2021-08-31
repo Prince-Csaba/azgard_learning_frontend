@@ -3,6 +3,7 @@ const supertest = require("supertest");
 const request = supertest(app);
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
+const jwt = require('jsonwebtoken');
 
 const User = require('../models/user.model');
 const Lesson = require('../models/lesson.model');
@@ -70,10 +71,10 @@ describe("testing some database-connected cases", () => {
     	});
   	}
 
- //nr 2
+ //nr 2 
   test(`Testing the endpoint '/api/quote', should return status 404, because the db is still empty`, async () => {
     const response = await request.get("/api/quote");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(200);
   });
 
 	//nr 3
@@ -208,7 +209,45 @@ describe("testing some database-connected cases", () => {
 			expect(newdata.body[0]).toBe("Barney is already cool, he does not needs any class");
 	});
 
+	test(`If i try to delete an existing user`, async () => {
+		await fillUser();
+		let token = jwt.sign({google_id: 1}, "thisisasecrettoken")
 
+		const response = await request.delete("/api/deleteuser").set({token: token });
+		
+		expect(response.status).toBe(200);
+		expect(response.body.message).toBe("User deleted");
+
+		const allUsers = await User.find();
+		expect(allUsers.length).toBe(0);
+	});	
+	
+ 	test(`If i try to delete a user with wrong token`, async () => {
+		await fillUser();
+		let token = jwt.sign({google_id: 1}, "thisisaBADsecret")
+
+		const response = await request.delete("/api/deleteuser").set({token: token });
+		
+		expect(response.status).toBe(401);
+		expect(response.body.error).toBe("Wrong or not existing token");
+	});
+
+	test(`If i try to delete a non existing user`, async () => {
+		await fillUser();
+		let token = jwt.sign({google_id: 2}, "thisisasecrettoken")
+
+		const response = await request.delete("/api/deleteuser").set({token: token });
+		
+		expect(response.status).toBe(404);
+		expect(response.body.error).toBe("Something went wrong");
+	});
+
+	test(`If i try to login without a code`, async () => {
+		const response = await request.post("/api/login").send({code: ""});
+		
+		expect(response.status).toBe(401);
+		expect(response.body.error).toBe("Code missing");
+	});
 
 	afterEach(async () => {
 		await Quote.deleteMany();
