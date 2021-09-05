@@ -7,7 +7,9 @@ import BasicCourse from './components/BasicCourse';
 import Home from './components/Home';
 import Hello from './components/Hello';
 import Login from './components/Login';
-import Navbar from './components/Navbar';
+import Navigation from './components/Navigation';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import jwt_decode from 'jwt-decode';
 
@@ -45,7 +47,7 @@ function App() {
     <Router>
       <UserContext.Provider value={user}>
         <main>
-          <Navbar setUser={setUser} />
+          <Navigation setUser={setUser} />
           <Switch>
             {user ? (
               <>
@@ -62,7 +64,7 @@ function App() {
                     window.location.href = googleUrl;
                     return null;
                   }}></Route>
-                <Route path='/login' component={Login}></Route>
+                <Route path='/login' exact component={Login}></Route>
               </>
             )}
           </Switch>
