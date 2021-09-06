@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import { Container, Card } from 'react-bootstrap';
 
 function Quote() {
   const [quote, setQuote] = useState("");
@@ -24,7 +24,7 @@ function Quote() {
   }, [])
 
   return (
-    <div>
+    <Container>
       <Card className="mb-4">
         <Card.Body>
           <blockquote className="blockquote mb-0">
@@ -39,7 +39,7 @@ function Quote() {
           </blockquote>
         </Card.Body>
       </Card>
-    </div>
+    </Container>
   )
 }
 

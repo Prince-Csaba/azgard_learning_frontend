@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container, Card } from 'react-bootstrap';
 
 function Course(props) {
   console.log(props.course.length);

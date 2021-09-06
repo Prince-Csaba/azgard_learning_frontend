@@ -26,7 +26,7 @@ function Navigation({ setUser }) {
             </Navbar.Brand>
           ) : (
             <Navbar.Brand href='/googleauth' className='google-button'>
-              <AiFillGoogleCircle />
+              <AiFillGoogleCircle className="my-auto" />
               Login with Google
             </Navbar.Brand>
           )}

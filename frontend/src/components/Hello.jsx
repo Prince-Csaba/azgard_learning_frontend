@@ -31,7 +31,7 @@ function Hello({ setUser }) {
 
 
   return (
-    <div className="hello d-flex flex-column">
+    <div className="hello">
       <h1>Üdvözöllek Azgardban!</h1>
       <h3 className="p-2">Tanulj, olvass, igyál egy sört, érezd jól magad!<br />
         De ne feledd, csak a bátrak jutnak a Valhallába!<br />
