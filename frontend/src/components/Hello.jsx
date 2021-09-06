@@ -40,7 +40,7 @@ function Hello({ setUser }) {
       <Quote />
 
       <Button variant="success" href='/basicCourse'>Képzések</Button>{' '}
-      <Button variant="danger" onClick={deleteUser}>FIÓK TÖRLÉSE</Button>{' '}
+      <Button variant="danger" onClick={deleteUser}>Fiók Törlése</Button>{' '}
     </div>
   );
 }

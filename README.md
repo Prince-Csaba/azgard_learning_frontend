@@ -124,4 +124,4 @@ The ideea behind the project is to be an MVP, so it contains all the basic, and 
 
   ## API Documentation
 
-  You can find the endpoint documentation at: /backend/docs/api_documentation.yaml
+  You can find the endpoint documentation at: http://localhost:8000/docs/#/

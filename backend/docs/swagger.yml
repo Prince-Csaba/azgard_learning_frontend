@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Training Company Documentation
-  description: This is ... decpription Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  title: Tracking learning progress
+  description: This is a MERN based school project, a Learning Progress Tracker app's API documentation.
   version: 0.1.0
   contact:
     email: "bolyaicsaba@gmail.com"
@@ -77,13 +77,13 @@ paths:
                     example: "No lessons found."
         "500":  # status code
           $ref: "#/components/responses/ServerError"
+  
   /fillCourses:
     get:
       tags:
       - "lessons"
       summary: Fills the Courses collection from a file
       description: Fills the Courses collection with the json from the ./Data/Courses/foundation.json file
-      operationId: "fillCourse"
       responses:
         "200":  # status code
           description: "successful operation, a message: 'Courses set!'"
@@ -115,13 +115,13 @@ paths:
           description: "no quotes found"
         "500":  # status code
           $ref: "#/components/responses/ServerError"
+          
   /fillQuotes:
     get:
       tags:
       - "quotes"
       summary: Fills the Quotes collection from a file
       description: Fills the Quotes collection with the json from the ./DataQuotes/quotes.json file
-      operationId: "fillQuote"
       responses:
         "200":  # status code
           description: "successful operation, a message: 'Quotes set!'"
@@ -155,11 +155,21 @@ paths:
                   description: Google auth code
       responses:
         "200":    # status code
-          description: "successful operation, a jwt token with the user informations"
+          description: "successful operation, a jwt token with the user information"
           content:
             application/json:
               schema:
                 type: string
+        "401":  # status code
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Code missing"
         "500":  # status code
           $ref: "#/components/responses/ServerError"
 
@@ -191,6 +201,8 @@ paths:
                   $ref: "#/components/schemas/Google_User"
         "404":  # status code
           description: "e-mail is missing"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
   
   /setprogress:
     post:
@@ -225,6 +237,43 @@ paths:
                   $ref: "#/components/schemas/Google_User"
         "404":  # status code
           description: "e-mail is missing or progress array is missing"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "email is missing"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
+          
+  /deleteuser:
+    delete:
+      tags:
+      - "user"
+      summary: Delete the User
+      description: ""
+      responses:
+        "200":  # status code
+          description: "User deleted"
+          content:
+            application/json:
+              schema:
+                type: string
+        "404":  # status code
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "user not existing"
+        "500":  # status code
+          $ref: "#/components/responses/ServerError"
+
             
 components:
   schemas:
