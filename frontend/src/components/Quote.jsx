@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Card } from 'react-bootstrap';
 
 function Quote() {
   const [quote, setQuote] = useState("");
@@ -24,9 +25,20 @@ function Quote() {
 
   return (
     <div>
-      <p className="quote">
-        {quote}
-      </p>
+      <Card className="mb-4">
+        <Card.Body>
+          <blockquote className="blockquote mb-0">
+            <p className="pt-0">
+              {' '}
+              {quote}
+              {' '}
+            </p>
+            <footer className="blockquote-footer">
+              Someone famous in <cite title="Source Title">Bromunity</cite>
+            </footer>
+          </blockquote>
+        </Card.Body>
+      </Card>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { UserContext } from '../App';
 import { Link } from 'react-router-dom';
 import { AiFillGoogleCircle } from 'react-icons/ai';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
 function Navigation({ setUser }) {
   const user = useContext(UserContext);
@@ -15,24 +15,23 @@ function Navigation({ setUser }) {
 
   return (
     <>
-      <Navbar collapseOnSelect fixed="top" expand="md" bg="dark" variant="dark" className="justify-content-around align-items-center">
+      <Navbar fixed="top" expand="md" bg="dark" variant="dark">
         {/* <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark" className="justify-content-around">
-       */}  <Container>
+       */}
+        <Container>
           {user ? (
             <Navbar.Brand className="google-button">
               <img src={user.picture} alt='ProfilePicture' />
               <h3>{user.full_name}</h3>
             </Navbar.Brand>
           ) : (
-            <Navbar.Brand>
-              <Nav.Link href='/googleauth' className='google-button'>
-                <AiFillGoogleCircle />
-                Login with Google
-              </Nav.Link>
+            <Navbar.Brand href='/googleauth' className='google-button'>
+              <AiFillGoogleCircle />
+              Login with Google
             </Navbar.Brand>
           )}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
               {user ? (
                 <div>
