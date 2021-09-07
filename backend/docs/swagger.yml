@@ -37,16 +37,6 @@ paths:
                   title:
                     type: string
                     example: "Express generator server is on"
-        "404":  # status code
-          description: "no lessons found"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: "No lessons found."
         "500":  # status code
           $ref: "#/components/responses/ServerError"
 
@@ -93,8 +83,6 @@ paths:
                 type: array
                 items: 
                   $ref: "#/components/schemas/Lesson"
-        "404":  # status code
-          description: "no lessons courses found"
         "500":  # status code
           $ref: "#/components/responses/ServerError"
 
