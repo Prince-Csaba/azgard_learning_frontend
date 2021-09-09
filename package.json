@@ -1,0 +1,19 @@
+{
+  "name": "azgard_core",
+  "version": "1.0.0",
+  "description": "## Main technologies",
+  "main": "./backend/bin/www",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prince-Csaba/Azgard_core.git"
+  },
+  "author": "Me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prince-Csaba/Azgard_core/issues"
+  },
+  "homepage": "https://github.com/Prince-Csaba/Azgard_core#readme"
+}
