@@ -4,7 +4,7 @@
   "description": "## Main technologies",
   "main": "./backend/bin/www",
   "scripts": {
-    "start": "node ./backend/bin/www "
+    "start": "node ./backend/bin/www",
     "test": "npm run test"
   },
   "repository": {
