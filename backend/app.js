@@ -6,10 +6,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const swaggerUi = require("swagger-ui-express");
+/* const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./docs/swagger.yml");
-
+ */
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -19,8 +19,8 @@ var app = express();
 
 app.use(cors())
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+/* app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+ */
 
 // view engine setup
 app.use(logger('dev'));
