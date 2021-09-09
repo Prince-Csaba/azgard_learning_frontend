@@ -10,9 +10,9 @@ db.once("open", () => {
   console.log("INFO: Connected to the database");
 });
 
-mongoose
+/* mongoose
   .connect(process.env.MONGODB_URI, {
-/*   .connect("mongodb://127.0.0.1:27017", { */
+/*   .connect("mongodb://127.0.0.1:27017", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -21,4 +21,5 @@ mongoose
   .catch((err) => {
     console.error("ERR: Initial database connection error, exiting...", err);
     process.exit(1);
-  });
+  }); 
+  */

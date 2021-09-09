@@ -8,8 +8,8 @@ const { getQuote } = require('../controllers/GetQuote');
 const { getProgress } = require('../controllers/GetProgress');
 const { setProgress } = require('../controllers/SetProgress');
 
-const { fillCourses } = require('../controllers/FillCourses');
-const { fillQuotes } = require('../controllers/FillQuotes');
+/* const { fillCourses } = require('../controllers/FillCourses');
+const { fillQuotes } = require('../controllers/FillQuotes'); */
 
 const { testController } = require('../controllers/TestController');
 
@@ -31,9 +31,9 @@ router.post('/setprogress', setProgress);
 
 router.post('/login', googleLogin);
 
-router.get('/fillcourses', fillCourses);
+/* router.get('/fillcourses', fillCourses);
 
-router.get('/fillquotes', fillQuotes);
+router.get('/fillquotes', fillQuotes); */
 
 router.delete('/deleteuser', deleteUser);
 
