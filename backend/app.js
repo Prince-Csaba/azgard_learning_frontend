@@ -28,10 +28,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const { fillCourses } = require('./controllers/FillCourses');
+/* const { fillCourses } = require('./controllers/FillCourses');
 const { fillQuotes } = require('./controllers/FillQuotes');
 fillCourses();
-fillQuotes();
+fillQuotes(); */
 
 /* app.use('/api', indexRouter); */
 app.use('/api', indexRouter);
