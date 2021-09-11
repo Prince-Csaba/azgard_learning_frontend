@@ -1,39 +1,46 @@
 {
-  "name": "azgard_core",
-  "version": "1.0.0",
-  "description": "## Main technologies",
-  "main": "./backend/bin/www",
-  "scripts": {
-    "start": "node ./backend/bin/www",
-    "test": "npm run test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Prince-Csaba/Azgard_core.git"
-  },
-  "author": "Me",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Prince-Csaba/Azgard_core/issues"
-  },
-  "homepage": "https://github.com/Prince-Csaba/Azgard_core#readme",
+  "name": "inner_training",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
-    "cookie-parser": "~1.4.4",
-    "cors": "~2.8.5",
-    "debug": "~2.6.9",
-    "dotenv": "^10.0.0",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "http-server": "^13.0.1",
-    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^5.13.5",
-    "mongoose-simple-random": "^0.4.1",
-    "morgan": "~1.9.1",
+    "npm": "^7.21.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
-    "swagger-ui-express": "^4.1.6",
-    "yamljs": "^0.3.0"
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "sass": "^1.37.5",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
