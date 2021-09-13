@@ -8,7 +8,7 @@ function Quote() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER}/api/quote`)
+    fetch(`https://azgard-learning-backend.herokuapp.com/api/quote`)
       .then(res => res.json())
       .then(
         (result) => {
