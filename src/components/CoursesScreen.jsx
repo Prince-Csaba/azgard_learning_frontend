@@ -10,7 +10,7 @@ function CoursesScreen() {
   const [isLong, setIsLong] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8000/old')
+    fetch('process.env.server/old')
       .then(res => res.json())
       .then(
         (result) => {
