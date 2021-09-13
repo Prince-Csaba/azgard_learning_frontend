@@ -27,7 +27,7 @@ function BasicCourse(props) {
   }, [changed])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/lessons')
+    fetch(`${process.env.REACT_APP_SERVER}/api/lessons`)
       .then(res => res.json())
       .then(
         (result) => {
