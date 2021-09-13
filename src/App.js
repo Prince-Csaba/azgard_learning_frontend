@@ -20,8 +20,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
-  const googleUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=
-  ${process.env.REACT_APP_REDIRECT}` /* &prompt=select_account */
+  const googleUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${process.env.REACT_APP_REDIRECT}` /* &prompt=select_account */
 
   //fetch user data
   const [user, setUser] = useState(false);
