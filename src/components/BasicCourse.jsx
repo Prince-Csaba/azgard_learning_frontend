@@ -18,7 +18,7 @@ function BasicCourse(props) {
 
   useEffect(() => {
     axios
-      .post('http://localhost:8000/api/progress', { email: user.email })
+      .post(`${process.env.REACT_APP_SERVER}/api/progress`, { email: user.email })
       .then((res) => {
         setProgress(res.data)
         console.log(`This is the user progress: ${res.data}`)

@@ -13,7 +13,7 @@ function Hello({ setUser }) {
   const deleteUser = () => {
 
     axios
-      .delete('http://localhost:8000/api/deleteuser', {
+      .delete('process.env.server/api/deleteuser', {
         headers: {
           token: localStorage.getItem('jwt')
         }

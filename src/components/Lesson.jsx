@@ -18,7 +18,7 @@ function Lesson(props) {
     console.log(props.progress)
 
     axios
-      .post('http://localhost:8000/api/setprogress', {
+      .post(`${process.env.REACT_APP_SERVER}/api/setprogress`, {
         email: user.email,
         progress: props.progress
       })

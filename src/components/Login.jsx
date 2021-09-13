@@ -9,7 +9,7 @@ function Login(props) {
 
   useEffect(() => {
     axios
-      .post('http://localhost:8000/api/login', { code })
+      .post(`${process.env.REACT_APP_SERVER}/api/login`, { code })
       .then((res) => {
         console.log(`Res: ${res.data}`)
         localStorage.setItem('jwt', res.data);

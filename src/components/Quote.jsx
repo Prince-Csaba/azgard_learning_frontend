@@ -8,7 +8,7 @@ function Quote() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/quote')
+    fetch(`${process.env.REACT_APP_SERVER}/api/quote`)
       .then(res => res.json())
       .then(
         (result) => {
